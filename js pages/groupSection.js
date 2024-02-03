@@ -6,7 +6,7 @@ const GroupTime = document.querySelector("#GroupTime");
 const GroupModuleName = document.querySelector("#GroupModuleName");
 const GroupStartDate = document.querySelector("#GroupStartDate");
 const tableBody = document.querySelector(".tbody1");
-
+const copyIcon = document.querySelector(".copyIcon");
 
 async function getInfoOfGroups(groupId) {
   const baseUrl = `https://script.google.com/macros/s/AKfycbzq0888ifBcsd1JIc6so3lRIOIOvTJv9aayX4T-xNqHRSrCChxL6DeVWajnmPKzQoLuFQ/exec`;
@@ -70,13 +70,15 @@ function hide() {
 
 // let newRowCounter = 0;
 let freshCount = 0; // initialize the counter
-
+let StudentCount = 0;
 
 async function diplayGroups(groupId) {
   change();
+  copyIcon.setAttribute('icon', 'bi:copy');
+
+  freshCount = 0;
   const groups = await getInfoOfGroups(groupId);
   tableBody.innerHTML = "";
-  
 
   for (let i = 0; i < groups.length; i++) {
     if (groupId == groups[i]["Code Group"]) {
@@ -111,36 +113,33 @@ async function diplayGroups(groupId) {
             <td>${group.Grade}</td>
         `;
 
-        let newRowCounter = 0; // declare the counter variable outside the loop
+      let newRowCounter = 0; // declare the counter variable outside the loop
 
-        let StudentCount = 0; // initialize the counter
+       // initialize the counter
 
-        for (let i = 0; i < groups.length; i++) {
-          if (groupId == groups[i]["Code Group"]) {
-            // ... existing code ...
+      for (let i = 0; i < groups.length; i++) {
+        if (groupId == groups[i]["Code Group"]) {
+          // ... existing code ...
 
-            newRowCounter++;
-            // const newRow = document.createElement("tr");
-            // ... existing code ...
+          newRowCounter++;
+          // const newRow = document.createElement("tr");
+          // ... existing code ...
 
-            // tableBody.appendChild(newRow);
-            ; // increment the counter each time a new row is added
-          }
-
-          
+          // tableBody.appendChild(newRow); // increment the counter each time a new row is added
         }
+      }
 
-        if (groups[i]["Student Type"] == "Fresh") {
-          console.log("Fresh Count:", freshCount);
-          freshCount++; // exit the loop if the counter reaches 20
-        } else {
-          StudentCount++;
-        }
+      if (groups[i]["Student Type"] == "Fresh") {
+        console.log("Fresh Count:", freshCount);
+        freshCount++; // exit the loop if the counter reaches 20
+      } else {
+        StudentCount++;
+      }
 
-        // console.log("Number of new rows created:", newRowCounter); // display the count in the console
+      // console.log("Number of new rows created:", newRowCounter); // display the count in the console
 
       tableBody.appendChild(newRow);
-      GroupCount.innerHTML =`${newRowCounter} / (${freshCount} Fresh)`;
+      GroupCount.innerHTML = `${newRowCounter} / (${freshCount} Fresh)`;
       GroupTime.innerHTML = group.GroupTime;
       GroupModuleName.innerHTML = group.ModuleName;
       GroupStartDate.innerHTML = formatteddate;
@@ -155,14 +154,14 @@ searchGroupBtn.addEventListener("click", function (e) {
   e.preventDefault();
   if (!searchGroup.value) {
     // Create and display a Bootstrap alert
-    const content  = document.querySelector(".content");
+    const content = document.querySelector(".content");
     const alertContainer = document.createElement("div");
     alertContainer.classList.add("alert", "alert-danger", "mt-3");
-    alertContainer.style.width = '25%';
-    alertContainer.style.position = 'fixed';
-    alertContainer.style.top = '0';
-    alertContainer.style.left = '38%';
-    alertContainer.style.margin = '20px';
+    alertContainer.style.width = "25%";
+    alertContainer.style.position = "fixed";
+    alertContainer.style.top = "0";
+    alertContainer.style.left = "38%";
+    alertContainer.style.margin = "20px";
     alertContainer.style.transition = "all 0.5s ease-in-out";
     alertContainer.setAttribute("role", "alert");
     alertContainer.innerHTML = `<strong>Error:</strong> Please enter a group ID.`;
@@ -174,11 +173,31 @@ searchGroupBtn.addEventListener("click", function (e) {
       alertContainer.remove();
     }, 2000);
   } else {
-    const allCard = document.querySelector('.allCard')
+    const allCard = document.querySelector(".allCard");
     const groupId = searchGroup.value;
     diplayGroups(groupId);
     allCard.style.display = "flex";
     // allCard.classList.remove("alert", "alert-danger", "mt-3");
-    
   }
 });
+
+// copy link of group
+
+// const textToCopy = document.querySelector("#textToCopy");
+
+// textToCopy.value = window.location.href;
+
+copyIcon.addEventListener("click", () => {
+  if (!searchGroup.value) {
+    return;
+  }
+  const groupId = searchGroup.value;
+
+  const text = window.location.href + "?id=" + groupId;
+  // const link = textToCopy.getAttribute("data-link");
+  navigator.clipboard.writeText(text);
+  copyIcon.setAttribute('icon', 'bi:check');
+
+  // alert(te);
+});
+
