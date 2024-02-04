@@ -72,6 +72,9 @@ function hide() {
 let freshCount = 0; // initialize the counter
 let StudentCount = 0;
 
+var groupIdToPass;
+
+
 async function diplayGroups(groupId) {
   change();
   copyIcon.setAttribute('icon', 'bi:copy');
@@ -112,6 +115,9 @@ async function diplayGroups(groupId) {
             <td>${group.StudyType}</td>
             <td>${group.Grade}</td>
         `;
+
+        groupIdToPass = groupId;
+        sessionStorage.setItem("groupId", groupIdToPass);
 
       let newRowCounter = 0; // declare the counter variable outside the loop
 
@@ -201,3 +207,113 @@ copyIcon.addEventListener("click", () => {
   // alert(te);
 });
 
+
+
+jQuery('#printG').on('submit', function (e) {
+  e.preventDefault();
+  jQuery.ajax({
+    url: 'https://script.google.com/macros/s/AKfycbyiU2EOOhxwojQmxpUAu_prsNgwJJdnyOWjqEaVXKvnJvy-DA7qlHBW1IxJPm6yLI_u/exec',
+    type: 'post',
+    data: jQuery('#printG').serialize(),
+    beforeSend: function () {
+      var spinner = '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
+      jQuery('#spinner-container5').html(spinner);
+    },
+
+    success: function (result) {
+      jQuery('#printG')[0].reset();
+      // Display success message here
+      // Display success message here
+      // alertMsg.classList.add('alert', 'alert-success');
+      // Check if id is empty
+      const groupId = searchGroup.value;
+      if (groupId === null || groupId === '') {
+        alertMsg.classList.add('alert', 'alert-danger');
+        alertMsg.innerHTML = '<strong>Error!</strong> Please Enter Invalid groupId .';
+        alertMsg.style.display = 'block';
+      } else {
+        alertMsg.classList.remove('alert', 'alert-danger');
+        alertMsg.classList.add('alert', 'alert-success');
+        alertMsg.innerHTML = '<strong>Success!</strong> Within 2 minutes, you will receive an email..';
+        alertMsg.style.display = 'block';
+      }
+      alertMsg.style.width = '25%';
+      alertMsg.style.position = 'fixed';
+      alertMsg.style.top = '0';
+      alertMsg.style.left = '38%';
+      alertMsg.style.margin = '20px';
+      alertMsg.style.transition = "all 0.5s ease-in-out";
+      // alertMsg.innerHTML = '<strong>Success!</strong> QR Code Send successfully.';
+      // alertMsg.style.display = "block";
+      alertMsg.style.opacity = "0";
+      setTimeout(function () {
+        alertMsg.style.opacity = "1";
+      }, 10);
+      setTimeout(function () {
+        alertMsg.style.display = "none";
+
+      }, 3000);
+    },
+    error: function () {
+      // Display error message here
+      alertMsg.classList.add('alert', 'alert-danger');
+      alertMsg.style.width = '25%';
+      alertMsg.style.position = 'fixed';
+      alertMsg.style.top = '0';
+      alertMsg.style.left = '38%';
+      alertMsg.style.margin = '20px';
+      alertMsg.style.transition = "all 0.5s ease-in-out";
+      alertMsg.innerHTML = '<strong>Error!</strong> An error occurred. Please try again.';
+      alertMsg.style.display = "block";
+      alertMsg.style.opacity = "0";
+      setTimeout(function () {
+        alertMsg.style.opacity = "1";
+      }, 10);
+      setTimeout(function () {
+        alertMsg.style.display = "none";
+      }, 2000);
+    },
+    complete: function () {
+      jQuery('#spinner-container5').empty();
+    }
+  });
+});
+
+const printGBtn = document.querySelector('.printGBtn');
+// if (userRole === "System") {
+//   digitalIdBtn.style.display = "none";
+// }
+
+printGBtn.addEventListener('click', () => {
+  // Get the id from session storage.
+  const groupId = searchGroup.value;
+
+  // Check if the id is empty.
+  if (!groupId) {
+    // Return from the function to stop it from executing.
+    return;
+  }
+
+  // Display a confirmation message to the user.
+  const confirmationMessage = `Are you sure you want to Print Group?`;
+  const confirmation = confirm(confirmationMessage);
+
+  // Check if the user confirmed the action.
+  if (confirmation) {
+    
+    // Continue with the rest of the function code.
+    const qrCodeId = document.querySelector('#qrCodeId');
+    const Emp = document.querySelector('#Emp');
+    const user = localStorage.getItem("myUser");
+    const Timestamp = document.querySelector('#Timestamp');
+    const timestamp = new Date();
+    // Convert the timestamp to dd/mm/yyyy format.
+    const formattedDate = timestamp.toLocaleString('en-GB');
+  
+    // Set the Timestamp1 input field to the formatted date.
+    Timestamp.value = formattedDate;
+    qrCodeId.value = groupId;
+    Emp.value = user;
+  }
+
+})

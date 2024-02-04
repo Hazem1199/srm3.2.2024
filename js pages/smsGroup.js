@@ -1,16 +1,16 @@
 
-const emailBtn = document.querySelector('.emailBtn');
-const emailBtnM = document.querySelector('#emailBtnM');
-const EmailSelect = document.querySelector('#EmailSelect');
+const smsBtn = document.querySelector('.smsBtn');
+const smsBtnG = document.querySelector('#smsBtnG');
+const SmsSelect = document.querySelector('#SmsSelect');
 
-EmailSelect.addEventListener('change', () => {
-  const EmailTextarea = document.querySelector('#EmailTextarea');
+SmsSelect.addEventListener('change', () => {
+  const smsTextarea = document.querySelector('#smsTextarea');
 
-  if (EmailSelect.value == "call me") {
+  if (SmsSelect.value == "call me") {
     
-    EmailTextarea.innerHTML = "تم الاتصال بحضرتك ولم يتم الرد برجاء التواصل فى اقرب وقت";
+    smsTextarea.innerHTML = "تم الاتصال بحضرتك ولم يتم الرد برجاء التواصل فى اقرب وقت";
   }else{
-    EmailTextarea.innerHTML = "";
+    smsTextarea.innerHTML = "";
   }
 
 });
@@ -18,57 +18,54 @@ EmailSelect.addEventListener('change', () => {
 
 
 
-
-
-emailBtn.addEventListener('click', () => {
+smsBtn.addEventListener('click', () => {
   // Get the id from session storage.
-  const id = sessionStorage.getItem('idToPass');
+  const groupId = sessionStorage.getItem('groupId');
   const userr = localStorage.getItem("myCode");
-  const emailStudentNum = document.querySelector('#emailStudentNum');
-  const emailEmployee = document.querySelector('#emailEmployee');
+  const smsGroupNum = document.querySelector('#smsGroupNum');
+  const smsEmployee = document.querySelector('#smsEmployee');
 
 
   // Check if the id is empty.
-  if (!id) {
+  if (!groupId) {
     // Return from the function to stop it from executing.
     return;
   }
 
   // Continue with the rest of the function code.
-  const Timestamp = document.querySelector('#emailTimestamp');
+  const Timestamp = document.querySelector('#smsTimestamp');
   const timestamp = new Date();
   // Convert the timestamp to dd/mm/yyyy format.
   const formattedDate = timestamp.toLocaleString('en-GB');
 
   // Set the Timestamp1 input field to the formatted date.
   Timestamp.value = formattedDate;
-  emailStudentNum.value = id;
-  emailEmployee.value = userr;
+  smsGroupNum.value = groupId;
+  smsEmployee.value = userr;
 })
 
 const alertMsg = document.querySelector('.alertMsg');
 
-
 // for Qr code btn 
-jQuery('#frmEmail').on('submit', function (e) {
+jQuery('#frmSmsGroup').on('submit', function (e) {
   e.preventDefault();
   jQuery.ajax({
-    url: 'https://script.google.com/macros/s/AKfycbzG8VoHWJmkbzaT3IZTm-KZEFjWI7qNks_1XddwEVbzIgmx3QL7yTnBS3vT-eB0fljw/exec',
+    url: 'https://script.google.com/macros/s/AKfycbyDxv-mfaxeP9Lx3aB1k9yyyr4RmRPwuZ88j-BRAlBYECSj5s-OTKkROjrOfe4eQV5A/exec',
     type: 'post',
-    data: jQuery('#frmEmail').serialize(),
+    data: jQuery('#frmSmsGroup').serialize(),
     beforeSend: function () {
       var spinner = '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
-      jQuery('#spinner-container4').html(spinner);
+      jQuery('#spinner-container').html(spinner);
     },
 
     success: function (result) {
-      jQuery('#frmEmail')[0].reset();
+      jQuery('#frmSmsGroup')[0].reset();
       // Display success message here
       // Display success message here
       // alertMsg.classList.add('alert', 'alert-success');
       // Check if id is empty
-      const id = sessionStorage.getItem("idToPass");
-      if (id === null || id === '') {
+      const groupId = sessionStorage.getItem("groupId");
+      if (groupId === null || groupId === '') {
         alertMsg.classList.add('alert', 'alert-danger');
         alertMsg.innerHTML = '<strong>Error!</strong> Please Enter Invalid Id .';
         alertMsg.style.display = 'block';
@@ -115,9 +112,11 @@ jQuery('#frmEmail').on('submit', function (e) {
       }, 2000);
     },
     complete: function () {
-      jQuery('#spinner-container4').empty();
-      jQuery('#exampleModal4').modal('hide');
-
+      jQuery('#spinner-container').empty();
+      jQuery('#groupsms').modal('hide');
+      $('#groupsms').on('hidden.bs.modal', function (e) {
+        $('.modal-backdrop').remove();
+    });
     }
   });
 });

@@ -648,6 +648,21 @@ window.onload = function () {
 }
 
 
+// first login
+
+
+if (userExists()) {
+  // Redirect to index.html
+  window.location.href = 'index.html';
+}
+
+function userExists() {
+  // Add your user check logic here
+  if (localStorage.getItem("myUser") === null) {
+    return false;
+  }
+  return /* your user check logic */;
+}
 
 
 
