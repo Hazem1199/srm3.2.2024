@@ -650,19 +650,22 @@ window.onload = function () {
 
 // first login
 
-
-if (userExists()) {
-  // Redirect to index.html
-  window.location.href = 'index.html';
-}
-
-function userExists() {
-  // Add your user check logic here
-  if (localStorage.getItem("myUser") === null) {
-    return false;
+window.addEventListener('load', function () {
+  if (localStorage.getItem("myCode") === "" || localStorage.getItem("myCode") === null) {
+    // Redirect to index.html
+    window.location.href = 'index.html';
   }
-  return /* your user check logic */;
-}
+})
+
+
+// function userExists() {
+//   // Add your user check logic here
+//   if () {
+//     return ;
+//   }
+// }
+
+console.log(localStorage.getItem("myCode"))
 
 
 

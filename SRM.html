@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -48,14 +49,14 @@
           </a>
           <span class="tooltip">Srm</span>
         </li>
-        <li>
+        <li id="user">
           <a href="./aiPage.html">
             <i class="bx bx-user"></i>
             <span class="link_name">User</span>
           </a>
           <span class="tooltip">User</span>
         </li>
-        <li>
+        <li id="Resrevation">
           <a href="#">
             <i class='bx bx-user-plus'></i>
             <span class="link_name">Resrevation</span>
@@ -69,21 +70,21 @@
           </a>
           <span class="tooltip">Tools</span>
         </li>
-        <li>
+        <li id="HR">
           <a href="#">
             <i class='bx bx-heading'></i>
             <span class="link_name">HR</span>
           </a>
           <span class="tooltip">HR</span>
         </li>
-        <li>
+        <li id="Group">
           <a href="/groupSection.html">
             <i class='bx bx-group'></i>
             <span class="link_name">Group</span>
           </a>
           <span class="tooltip">Group</span>
         </li>
-        <li>
+        <li id="Settings">
           <a href="#">
             <i class="bx bx-cog"></i>
             <span class="link_name">Settings</span>
@@ -187,7 +188,7 @@
       <div class="head bg-white d-flex">
 
         <form class="searchCon flex-grow-1">
-          <div class="alertMsg"></div>
+          <div class="alertMsg" id="alertMsg"></div>
           <div class="search p-relative">
             <input class="rad-15" type="search" id="searchInput" name="search" placeholder="Write ID...." required>
           </div>
@@ -200,7 +201,6 @@
 
         <!-- support modal -->
         <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="alertMsg"></div>
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -285,7 +285,6 @@
         </button>
 
         <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="alertMsg"></div>
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -367,7 +366,6 @@
         </button>
 
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="alertMsg"></div>
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -442,7 +440,6 @@
           <p class="mb-0">Online Share</p>
         </button>
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="alertMsg"></div>
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -588,6 +585,7 @@
           <!-- Start Overview -->
           <div class="overview bg-white rad-10 d-flex align-center">
             <div class="avatar-box txt-c p-20">
+                <!-- <iframe id="profile-pic" class="circle-container"  src="" frameborder="0" scrolling="no"   ></iframe> -->
               <img id="profile-pic" class="rad-half mb-10" src="" alt="" />
               <h5 class="m-0 headName"></h5>
               <p class="c-grey mt-10" id="level"></p>
@@ -608,7 +606,6 @@
 
               <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="alertMsg"></div>
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">

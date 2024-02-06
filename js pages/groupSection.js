@@ -317,3 +317,11 @@ printGBtn.addEventListener('click', () => {
   }
 
 })
+
+
+window.addEventListener('load', function () {
+  if (localStorage.getItem("myCode") === "" || localStorage.getItem("myCode") === null) {
+    // Redirect to index.html
+    window.location.href = 'index.html';
+  }
+})

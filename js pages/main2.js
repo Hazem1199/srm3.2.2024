@@ -173,8 +173,6 @@ async function showInvoice(value) {
       const ReceptionistToPass = sessionStorage.getItem("ReceptionistToPass");
       const groupToPass = sessionStorage.getItem("groupToPass");
 
-
-
       const newRow = document.createElement("tr");
       const timeCell = document.createElement("td");
       const AmountCell = document.createElement("td");
@@ -205,11 +203,10 @@ async function showInvoice(value) {
       serialToPass = studentInvoice.autoSerial;
       sessionStorage.setItem("serialToPass", serialToPass);
 
-
       const id = sessionStorage.getItem("idToPass");
       const userr = localStorage.getItem("myCode");
-      sendBtn.classList.add("sendBtn")
-      printBtn.classList.add("sendBtn")
+      sendBtn.classList.add("sendBtn");
+      printBtn.classList.add("sendBtn");
 
       sendBtn.innerHTML = `
             <div class="d-flex " >
@@ -218,9 +215,10 @@ async function showInvoice(value) {
                 <input type="text" name="Timestamp" class ="Timestamp"  style="display:none ;"> 
                 <input type="text" name="Employee" class ="Employee" value="${userr}" style="display:none ;"> 
                 <input type="number" name="Student Num" class ="StudentNum" value="${id}" style="display:none ;"> 
-                    <button type="submit" class="btn btn-primary btnSend" id="btnSend">Send
-                    <div id="spinner-container"></div> 
-                    </button>
+                    <button id="btnSend" type="submit" class="btn button btnSend mx-1">
+                    <p class="mb-0">Send</p>
+                    <div id="spinner-container1"></div>
+                  </button>
                 </form>
 
                 <button id="printBtnn"  class="card-link btn btn-success mx-1" data-bs-toggle="modal" title="Print"
@@ -228,7 +226,6 @@ async function showInvoice(value) {
                 </button>
 
                 <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="alertMsg"></div>
     <div class="modal-dialog modal-dialog-centered" style="max-width: 100%;">
         <div class="modal-content">
             <div class="modal-header d-flex align-items-center justify-content-between" style="padding: 10px;">
@@ -293,17 +290,18 @@ async function showInvoice(value) {
       printBtnn.addEventListener("click", () => {
         // Get the id from session storage.
         const id = sessionStorage.getItem("idToPass");
-        const Submittedon = document.querySelector('.Submittedon');
-        const InvoiceNo = document.querySelector('.InvoiceNo');
-        const PaidAmount = document.querySelector('.PaidAmount');
-        const Submittedby = document.querySelector('.Submittedby');
-        const TypeOfInvoice = document.querySelector('.TypeOfInvoice');
+        const Submittedon = document.querySelector(".Submittedon");
+        const InvoiceNo = document.querySelector(".InvoiceNo");
+        const PaidAmount = document.querySelector(".PaidAmount");
+        const Submittedby = document.querySelector(".Submittedby");
+        const TypeOfInvoice = document.querySelector(".TypeOfInvoice");
 
         // Check if the id is empty.
         if (!id) {
           // Return from the function to stop it from executing.
           return;
         }
+
         // Continue with the rest of the function code.
         const timestamp = new Date();
         // Convert the timestamp to dd/mm/yyyy format.
@@ -311,7 +309,7 @@ async function showInvoice(value) {
 
         // Collect form data
 
-        Submittedon.innerHTML = formattedTimestamp
+        Submittedon.innerHTML = formattedTimestamp;
         Submittedby.innerHTML = ReceptionistToPass;
         TypeOfInvoice.innerHTML = `Type of invoice # ${Invoices[i]["InvoiceType "]}`;
         PaidAmount.innerHTML = `${Invoices[i]["Amount "]} LE`;
@@ -331,8 +329,6 @@ async function showInvoice(value) {
         }, 1000);
       });
 
-
-
       // function printPageArea(areaID) {
       //   console.log(areaID);
       //   var printContent = document.getElementById(areaID).innerHTML;
@@ -341,7 +337,6 @@ async function showInvoice(value) {
       //   window.print();
       //   document.body.innerHTML = originalContent;
       // }
-
 
       // Add conditional statement to change background color
       if (studentInvoice.autoSerial.includes("R")) {
@@ -355,38 +350,45 @@ async function showInvoice(value) {
       const btnSend = newRow.querySelector("#btnSend");
 
       btnSend.addEventListener("click", () => {
-
         // Get the id from session storage.
         const id = sessionStorage.getItem("idToPass");
-
 
         // Check if the id is empty.
         if (!id) {
           // Return from the function to stop it from executing.
           return;
         }
-        // Continue with the rest of the function code.
-        const timestamp = new Date();
-        // Convert the timestamp to dd/mm/yyyy format.
-        const formattedDate = timestamp.toLocaleString("en-GB");
 
-        // Collect form data
-        const serial = document.querySelector('#Serial');
-        const Timestamp = document.querySelector('.Timestamp');
-        Timestamp.value = formattedDate
+        // Display a confirmation message to the user.
+        const confirmationMessage = `Are you sure you want to send?`;
+        const confirmation = confirm(confirmationMessage);
+        if (confirmation) {
+          // Continue with the rest of the function code.
+          const timestamp = new Date();
+          // Convert the timestamp to dd/mm/yyyy format.
+          const formattedDate = timestamp.toLocaleString("en-GB");
 
+          // Collect form data
+          const serial = document.querySelector("#Serial");
+          const Timestamp = document.querySelector(".Timestamp");
+          Timestamp.value = formattedDate;
 
-        serial.value = Invoices[i]["autoSerial "];
+          serial.value = Invoices[i]["autoSerial "];
+        } else {
+          
+            const spinnerContainer = document.querySelector('#spinner-container1');
+            spinnerContainer.style.display = 'none';
+            const alertMsg2 = document.querySelector('#alertMsg2');
+        
+            alertMsg2.style.display = "none";
+          // Return from the function to stop it from executing.
+          
+        }
       });
 
       tbodyInvoice.appendChild(newRow);
     }
-  };
-
-
-
-
-
+  }
 
   // submit form for send invoice
   jQuery(".frmSendInvoice").on("submit", function (e) {
@@ -396,23 +398,31 @@ async function showInvoice(value) {
       type: "post",
       data: jQuery(".frmSendInvoice").serialize(),
       beforeSend: function () {
-        var spinner =
-          '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
-        jQuery("#spinner-container").html(spinner);
+        var spinner = '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
+        jQuery("#spinner-container1").html(spinner);
       },
       success: function (result) {
         jQuery(".frmSendInvoice")[0].reset();
-        // Display success message here
-        alertMsg.classList.add("alert", "alert-success");
+        const id = sessionStorage.getItem("idToPass");
+        if (id === null || id === "") {
+          alertMsg.classList.add("alert", "alert-danger");
+          alertMsg.innerHTML =
+            "<strong>Error!</strong> Please Enter Invalid Id .";
+          alertMsg.style.display = "block";
+        } else {
+          alertMsg.classList.remove("alert", "alert-danger");
+          alertMsg.classList.add("alert", "alert-success");
+          alertMsg.innerHTML = "<strong>Success!</strong> Invoice Sent Successfully.";
+          alertMsg.style.display = "block";
+        }
         alertMsg.style.width = "25%";
         alertMsg.style.position = "fixed";
         alertMsg.style.top = "0";
-        alertMsg.style.left = "0";
+        alertMsg.style.left = "38%";
         alertMsg.style.margin = "20px";
         alertMsg.style.transition = "all 0.5s ease-in-out";
-        alertMsg.innerHTML =
-          "<strong>Success!</strong> Payment added successfully.";
-        alertMsg.style.display = "block";
+        // alertMsg.innerHTML = '<strong>Success!</strong> QR Code Send successfully.';
+        // alertMsg.style.display = "block";
         alertMsg.style.opacity = "0";
         setTimeout(function () {
           alertMsg.style.opacity = "1";
@@ -441,13 +451,12 @@ async function showInvoice(value) {
         }, 2000);
       },
       complete: function () {
-        jQuery("#spinner-container").empty();
+        jQuery("#spinner-container1").empty();
       },
     });
   });
 
   hide();
-
 }
 
 var paramsGroup = new URLSearchParams(window.location.search);
@@ -650,3 +659,13 @@ window.onload = function () {
 };
 
 // var user = localStorage.getItem("myUser");
+
+window.addEventListener("load", function () {
+  if (
+    localStorage.getItem("myCode") === "" ||
+    localStorage.getItem("myCode") === null
+  ) {
+    // Redirect to index.html
+    window.location.href = "index.html";
+  }
+});

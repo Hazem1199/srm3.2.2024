@@ -46,7 +46,6 @@ emailBtn.addEventListener('click', () => {
   emailEmployee.value = userr;
 })
 
-const alertMsg = document.querySelector('.alertMsg');
 
 
 // for Qr code btn 

@@ -43,6 +43,7 @@ const Employee = document.querySelector('#Employee')
 const StudentNum = document.querySelector('#StudentNum')
 const shareSubmit = document.querySelector('.shareSubmit')
 // const back = history.back();
+const user = document.querySelector('#user')
 
 const userRole = localStorage.getItem('myUserRole');
 const progressBar = document.getElementById("progress-bar");
@@ -311,6 +312,7 @@ async function display(value) {
     Phone.innerHTML = user.Phone;
     headName.innerHTML = user.Name.slice(0, 50);
     pic.src = user.img;
+    console.log(user.img);
     Career.innerHTML = user.CareerType;
     StudyType.innerHTML = user.StudyType;
     IdNumber.innerHTML = user.IdNumber;
@@ -791,12 +793,18 @@ shareSubmit.addEventListener('click', () => {
   Employee.value = userr;
 })
 
-
+// condetion for user role
+if (userRole === "Coordinator") {
+  const Resrevation = document.querySelector('#Resrevation');
+  const HR = document.querySelector('#HR');
+  const Settings = document.querySelector('#Settings');
+  user.style.display = "none";
+  Resrevation.style.display = "none";
+  HR.style.display = "none";
+  Settings.style.display = "none";
+}
 
 const digitalIdBtn = document.querySelector('.digitalIdBtn');
-// if (userRole === "System") {
-//   digitalIdBtn.style.display = "none";
-// }
 
 digitalIdBtn.addEventListener('click', () => {
   // Get the id from session storage.
@@ -827,6 +835,12 @@ digitalIdBtn.addEventListener('click', () => {
     Timestamp.value = formattedDate;
     qrCodeId.value = id;
     Emp.value = userr;
+  } else {
+    const spinnerContainer = document.querySelector('#spinner-container5');
+    spinnerContainer.style.display = 'none';
+    const alertMsg = document.querySelector('#alertMsg');
+
+    alertMsg.style.display = "none";
   }
 
 })
@@ -904,7 +918,7 @@ jQuery('#App').on('submit', function (e) {
 
 frmOnlineShare
 
-// for App btn 
+// for frmOnlineShare btn 
 jQuery('#frmOnlineShare').on('submit', function (e) {
   e.preventDefault();
   jQuery.ajax({
@@ -1047,6 +1061,12 @@ appBtn.addEventListener('click', () => {
     Timestamp1.value = formattedDate;
     appId.value = id;
     Emp1.value = userr;
+  } else {
+    const spinnerContainer = document.querySelector('#spinner-container1');
+    spinnerContainer.style.display = 'none';
+    const alertMsg = document.querySelector('#alertMsg');
+
+    alertMsg.style.display = "none";
   }
 });
 
@@ -1127,3 +1147,11 @@ appBtn.addEventListener('click', () => {
 // trace.innerHTML = storage;
 
 // document.body.appendChild(trace);
+
+
+window.addEventListener('load', function () {
+  if (localStorage.getItem("myCode") === "" || localStorage.getItem("myCode") === null) {
+    // Redirect to index.html
+    window.location.href = 'index.html';
+  }
+})

@@ -259,3 +259,12 @@ async function research() {
 // Home.addEventListener('click', () => {
 //   research(id)
 // });
+
+
+
+window.addEventListener('load', function () {
+  if (localStorage.getItem("myCode") === "" || localStorage.getItem("myCode") === null) {
+    // Redirect to index.html
+    window.location.href = 'index.html';
+  }
+})
