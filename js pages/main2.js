@@ -362,30 +362,26 @@ async function showInvoice(value) {
         // Display a confirmation message to the user.
         const confirmationMessage = `Are you sure you want to send?`;
         const confirmation = confirm(confirmationMessage);
+
         if (confirmation) {
           // Continue with the rest of the function code.
           const timestamp = new Date();
           // Convert the timestamp to dd/mm/yyyy format.
           const formattedDate = timestamp.toLocaleString("en-GB");
-
           // Collect form data
           const serial = document.querySelector("#Serial");
           const Timestamp = document.querySelector(".Timestamp");
           Timestamp.value = formattedDate;
-
           serial.value = Invoices[i]["autoSerial "];
         } else {
-          
-            const spinnerContainer = document.querySelector('#spinner-container1');
-            spinnerContainer.style.display = 'none';
-            const alertMsg2 = document.querySelector('#alertMsg2');
-        
-            alertMsg2.style.display = "none";
-          // Return from the function to stop it from executing.
-          
+          const spinnerContainer = document.querySelector(
+            "#spinner-container1"
+          );
+          spinnerContainer.style.display = "none";
+          const alertMsg2 = document.querySelector("#alertMsg2");
+          alertMsg2.style.display = "none";
         }
       });
-
       tbodyInvoice.appendChild(newRow);
     }
   }
@@ -398,13 +394,16 @@ async function showInvoice(value) {
       type: "post",
       data: jQuery(".frmSendInvoice").serialize(),
       beforeSend: function () {
-        var spinner = '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
+        var spinner =
+          '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
         jQuery("#spinner-container1").html(spinner);
       },
       success: function (result) {
         jQuery(".frmSendInvoice")[0].reset();
         const id = sessionStorage.getItem("idToPass");
-        if (id === null || id === "") {
+        const Timestamp = document.querySelector(".Timestamp");
+
+        if (id === null || id === "" || Timestamp.value === "") {
           alertMsg.classList.add("alert", "alert-danger");
           alertMsg.innerHTML =
             "<strong>Error!</strong> Please Enter Invalid Id .";
@@ -412,7 +411,8 @@ async function showInvoice(value) {
         } else {
           alertMsg.classList.remove("alert", "alert-danger");
           alertMsg.classList.add("alert", "alert-success");
-          alertMsg.innerHTML = "<strong>Success!</strong> Invoice Sent Successfully.";
+          alertMsg.innerHTML =
+            "<strong>Success!</strong> Invoice Sent Successfully.";
           alertMsg.style.display = "block";
         }
         alertMsg.style.width = "25%";
