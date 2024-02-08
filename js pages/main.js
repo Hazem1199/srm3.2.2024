@@ -1,7 +1,6 @@
 // const getResponse = response => response.json();
 // const processJSON = data => {const data = JSON}
 
-
 var searchInput = document.getElementsByName("search");
 var fName = document.querySelector(".fName");
 var body = document.getElementById("body");
@@ -9,54 +8,51 @@ var infoBox = document.querySelector(".info-box");
 var Email = document.querySelector(".Email");
 var Phone = document.querySelector(".Phone");
 var ID = document.querySelector(".ID");
-var Career = document.querySelector('.Career');
-var StudyType = document.querySelector('.StudyType');
+var Career = document.querySelector(".Career");
+var StudyType = document.querySelector(".StudyType");
 var Requests = document.getElementById("Requests");
 var Complaint = document.querySelector("#Complaint");
 var searchButton = document.querySelector(".search-button");
 var pic = document.getElementById("profile-pic");
 var headName = document.querySelector(".headName");
 var loadingDiv = document.querySelector(".loading-div");
-const moduleCountElement = document.getElementById('moduleCount');
-const numDeadline = document.querySelector('.num-deadline');
-const footer3 = document.querySelector('.footer3');
-const seeMore3 = document.querySelector('.seeMore3');
-const seeMore4 = document.querySelector('.seeMore4');
-const IdNumber = document.querySelector('.IdNumber');
-const DOB = document.querySelector('.DOB');
-const Grade = document.querySelector('.Grade');
-const Scholarship = document.querySelector('.Scholarship');
-const Receptionist = document.querySelector('.Receptionist');
-const Reserver = document.querySelector('.Reserver');
-const CCAgent = document.querySelector('.CCAgent');
-const ReservationDate = document.querySelector('.ReservationDate');
-const more = document.querySelector('.more');
-const emailcrd = document.querySelector('.email-crd');
-const moreBtn = document.querySelector('.more-btn');
-const invoiceBtn = document.querySelector(".invoiceBtn")
-const Schadule = document.querySelector('.Schadule')
-const Payments = document.querySelector('.Payments')
-const Papers = document.querySelector('.Papers')
-const Requestss = document.querySelector('.Requestss')
-const Complaintss = document.querySelector('.Complaintss')
-const Employee = document.querySelector('#Employee')
-const StudentNum = document.querySelector('#StudentNum')
-const shareSubmit = document.querySelector('.shareSubmit')
+const moduleCountElement = document.getElementById("moduleCount");
+const numDeadline = document.querySelector(".num-deadline");
+const footer3 = document.querySelector(".footer3");
+const seeMore3 = document.querySelector(".seeMore3");
+const seeMore4 = document.querySelector(".seeMore4");
+const IdNumber = document.querySelector(".IdNumber");
+const DOB = document.querySelector(".DOB");
+const Grade = document.querySelector(".Grade");
+const Scholarship = document.querySelector(".Scholarship");
+const Receptionist = document.querySelector(".Receptionist");
+const Reserver = document.querySelector(".Reserver");
+const CCAgent = document.querySelector(".CCAgent");
+const ReservationDate = document.querySelector(".ReservationDate");
+const more = document.querySelector(".more");
+const emailcrd = document.querySelector(".email-crd");
+const moreBtn = document.querySelector(".more-btn");
+const invoiceBtn = document.querySelector(".invoiceBtn");
+const Schadule = document.querySelector(".Schadule");
+const Payments = document.querySelector(".Payments");
+const Papers = document.querySelector(".Papers");
+const Requestss = document.querySelector(".Requestss");
+const Complaintss = document.querySelector(".Complaintss");
+const Employee = document.querySelector("#Employee");
+const StudentNum = document.querySelector("#StudentNum");
+const shareSubmit = document.querySelector(".shareSubmit");
 // const back = history.back();
-const user = document.querySelector('#user')
+const user = document.querySelector("#user");
 
-const userRole = localStorage.getItem('myUserRole');
+const userRole = localStorage.getItem("myUserRole");
 const progressBar = document.getElementById("progress-bar");
 const level = document.getElementById("level");
 
-
-const welcome = document.querySelector('.Welcome');
+const welcome = document.querySelector(".Welcome");
 var userr = localStorage.getItem("myCode");
 console.log(userr);
 
-welcome.innerHTML = `Welcome ${userr}!`
-
-
+welcome.innerHTML = `Welcome ${userr}!`;
 
 // loading card
 
@@ -70,18 +66,16 @@ welcome.innerHTML = `Welcome ${userr}!`
 //   spinner3.style.display = 'none';
 // }
 
-
-const spinner4 = document.getElementById('spinner4');
+const spinner4 = document.getElementById("spinner4");
 
 function loadOn4() {
-  spinner4.style.display = 'block';
+  spinner4.style.display = "block";
 }
 
 function loadOff4() {
-  spinner4.style.display = 'none';
+  spinner4.style.display = "none";
 }
 //end
-
 
 var overlay = document.createElement("div");
 overlay.style.position = "fixed";
@@ -116,10 +110,13 @@ function hide() {
 // }ئ
 
 async function getData(id) {
-  const response = await fetch('https://script.google.com/macros/s/AKfycbyL9kF0Y3YkOKxbq67QhMs3CoOBTkunhpqxDwJVJQ6MCdhVG9nu-TJj3LLzhlnB06Gy7Q/exec', {
-    method: 'POST',
-    body: JSON.stringify({ "id": id })
-  });
+  const response = await fetch(
+    "https://script.google.com/macros/s/AKfycbyL9kF0Y3YkOKxbq67QhMs3CoOBTkunhpqxDwJVJQ6MCdhVG9nu-TJj3LLzhlnB06Gy7Q/exec",
+    {
+      method: "POST",
+      body: JSON.stringify({ id: id }),
+    }
+  );
 
   // Check if the response is successful (status code 200)
   if (response.ok) {
@@ -145,9 +142,6 @@ async function getOnlineShare() {
   console.log(moduledata);
   return moduledata;
 }
-
-
-
 
 // Get data from session storage if it exists
 const savedData = sessionStorage.getItem("myAllData");
@@ -178,7 +172,7 @@ if (savedData) {
   Papers.innerHTML = data.Papers;
   Requestss.innerHTML = data.Requestss;
   Complaintss.innerHTML = data.Complaintss;
-  updateButtonState()
+  updateButtonState();
   // const Level = sessionStorage.getItem("Level");
   // progressBar.innerHTML = data
   // level.innerHTML = Level.indexOf("level");
@@ -209,7 +203,6 @@ if (savedData) {
 // console.log(GlobalObject);
 // sessionStorage.setItem("GlobalObject", JSON.stringify(GlobalObject));
 
-
 // Add a new variable to store the ID of the user to be passed to the other page
 var idToPass = 0;
 var ScholarshipToPass;
@@ -217,9 +210,8 @@ var ReceptionistToPass;
 var groupToPass;
 var emailToPass;
 var schaduleToPass;
-// var progressBar ; 
+// var progressBar ;
 // var level ;
-
 
 async function display(value) {
   change();
@@ -269,7 +261,6 @@ async function display(value) {
     // Process the data when it is not null
     console.log("Data:", users);
   }
-
 
   users.forEach((element) => {
     // Initialize the variable `user`
@@ -332,25 +323,21 @@ async function display(value) {
     ScholarshipToPass = user.Scholarship;
     ReceptionistToPass = user.Receptionist;
     sessionStorage.setItem("idToPass", idToPass);
-    schaduleToPass = user.Schadule
+    schaduleToPass = user.Schadule;
     sessionStorage.setItem("schaduleToPass", schaduleToPass);
     sessionStorage.setItem("ScholarshipToPass", ScholarshipToPass);
     sessionStorage.setItem("ReceptionistToPass", ReceptionistToPass);
-    emailToPass = user.Email
+    emailToPass = user.Email;
     sessionStorage.setItem("emailToPass", emailToPass);
     groupToPass = user.StudyType;
     sessionStorage.setItem("groupToPass", groupToPass);
-
-
   });
 
   // progress-bar
 
   console.log("schaduleToPass : " + schaduleToPass);
 
-
   if (schaduleToPass) {
-    
     const numerator = parseInt(schaduleToPass.split("/")[0]);
     const denominator = parseInt(schaduleToPass.split("/")[1]);
     const decimal = numerator / denominator;
@@ -364,14 +351,12 @@ async function display(value) {
     sessionStorage.setItem("level", level.innerHTML);
   }
 
-
-
   console.log("email : " + emailToPass);
   console.log("StudyType : " + groupToPass);
 
-  await selectEmail()
-  await selectModule()
-  const ShareEnd = document.querySelector('.ShareEnd');
+  await selectEmail();
+  await selectModule();
+  const ShareEnd = document.querySelector(".ShareEnd");
 
   // Get the current date
   const currentDate = new Date();
@@ -381,7 +366,7 @@ async function display(value) {
   futureDate.setDate(currentDate.getDate() + 30);
 
   // Convert the future date to dd/mm/yyyy format
-  const formattedFutureDate = futureDate.toLocaleDateString('en-GB');
+  const formattedFutureDate = futureDate.toLocaleDateString("en-GB");
 
   // Display the result
   ShareEnd.innerHTML = "share End : " + formattedFutureDate;
@@ -390,10 +375,8 @@ async function display(value) {
   hide();
 }
 
-
-
 // Retrieve values from localStorage on page load
-window.addEventListener('load', function() {
+window.addEventListener("load", function () {
   const savedProgressBarWidth = sessionStorage.getItem("progressBar");
   const savedLevel = sessionStorage.getItem("level");
 
@@ -406,41 +389,39 @@ window.addEventListener('load', function() {
   }
 });
 
-
 function moreEmail() {
   more.style.display = "inline";
 }
 
-let setMore = sessionStorage.setItem('moreEmail', JSON.stringify(moreEmail()));
-window.open(sessionStorage.getItem("moreEmail"))
+let setMore = sessionStorage.setItem("moreEmail", JSON.stringify(moreEmail()));
+window.open(sessionStorage.getItem("moreEmail"));
 
-moreBtn.addEventListener('click', () => {
+moreBtn.addEventListener("click", () => {
   emailcrd.style.display = "block";
   // emailcrd.style.display = emailcrd.style.display === 'none' ? 'block' : 'none';
 });
 
 // select email function for online share
 async function selectEmail() {
-  const emailSelect = document.querySelector('#emailSelect');
-  let getEmail = sessionStorage.getItem('emailToPass');
+  const emailSelect = document.querySelector("#emailSelect");
+  let getEmail = sessionStorage.getItem("emailToPass");
   console.log("getEmail : " + getEmail);
   // Clear existing options
   emailSelect.innerHTML = "";
   // Split multiple email addresses and push them into an array
-  const emailArray = getEmail.split(',').map(email => email.trim());
+  const emailArray = getEmail.split(",").map((email) => email.trim());
 
   console.log("Email Array:", emailArray);
 
-  emailArray.forEach(email => {
-    const option = document.createElement('option');
+  emailArray.forEach((email) => {
+    const option = document.createElement("option");
     option.text = email;
     option.value = email;
     emailSelect.appendChild(option);
   });
-
 }
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   selectEmail();
   selectModule();
 });
@@ -449,43 +430,36 @@ window.addEventListener('load', () => {
 //   updateButtonState();
 // })
 
-
+const ModuleSelect = document.querySelector("#ModuleSelect");
+const ModuleCodeSelect = document.querySelector("#ModuleCodeSelect");
 async function selectModule() {
-  const ModuleSelect = document.querySelector('#ModuleSelect');
-  const ModuleCodeSelect = document.querySelector('#ModuleCodeSelect');
   let getModule = await getOnlineShare();
   console.log("getModule : " + getModule);
+
+  // Clear existing options
+  ModuleSelect.innerHTML = "";
 
   getModule.forEach((element) => {
     var modules = {
       Module: element.Module,
       ModuleCode: element["Module Code"],
-    }
-    const option = document.createElement('option');
+    };
+    const option = document.createElement("option");
     option.text = modules.Module.toLowerCase(); // Assuming you want module names in lowercase
     option.value = modules.Module;
     ModuleSelect.appendChild(option);
-    ModuleSelect.addEventListener('change', () => {
-      if (ModuleSelect.value === modules.Module) {
+  });
 
-        ModuleCodeSelect.value = modules.ModuleCode;
-      }
-
-    });
-
+  // Add a single event listener outside the loop
+  ModuleSelect.addEventListener("change", () => {
+    let selectedModuleCode = getModule.find(
+      (element) => element.Module === ModuleSelect.value
+    )["Module Code"];
+    ModuleCodeSelect.value = selectedModuleCode;
+    console.log("ModuleCodeSelect : " + ModuleCodeSelect.value);
+    sessionStorage.setItem("ModuleCodeSelect", ModuleCodeSelect.value);
   });
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // console.log("userID1 : "+element.ID);
 // console.log("userID1 : " + GlobalObject.userID);
@@ -493,7 +467,6 @@ async function selectModule() {
 const savedDataReq2 = sessionStorage.getItem("GlobalObject");
 const dataSto88 = JSON.parse(savedDataReq2);
 // console.log("dataSto88.gID:" + dataSto88.gID);
-
 
 async function openInvoice() {
   const id = sessionStorage.getItem("idToPass");
@@ -503,13 +476,11 @@ async function openInvoice() {
   invoiceBtn.href = invoiceUrl;
   let invoice = await fetch(invoiceUrl);
   let invoiceData = await invoice.json();
-  localStorage.setItem('invoiceData', JSON.stringify(invoiceData));
+  localStorage.setItem("invoiceData", JSON.stringify(invoiceData));
   window.open(invoiceUrl); // Open moduleUrl in a new window
 }
 
-
-
-invoiceBtn.addEventListener('click', () => {
+invoiceBtn.addEventListener("click", () => {
   // Get the ID from the search input field
   const id = idToPass;
 
@@ -524,12 +495,9 @@ invoiceBtn.addEventListener('click', () => {
     const dataSto2 = JSON.parse(savedDataReq2);
     openInvoice(dataSto2.userID);
   }
-}
-)
+});
 
-
-
-// plan function 
+// plan function
 
 // async function displayPlanCard(value) {
 //   loadOn4()
@@ -542,13 +510,13 @@ invoiceBtn.addEventListener('click', () => {
 //       // Save the data to session storage
 //       sessionStorage.setItem("myDataPlan", JSON.stringify(planInfo));
 //       // Use the data to render the page
-//       // traning plan 
+//       // traning plan
 //       moduleCountElement.textContent = planInfo.paln;
 //     }
 //   });
 //   loadOff4()
 
-//   // module location 
+//   // module location
 //   let moduleUrl = `Group.html?id=${value}`;
 //   seeMore4.href = moduleUrl;
 //   let module = await fetch(moduleUrl);
@@ -558,8 +526,7 @@ invoiceBtn.addEventListener('click', () => {
 
 // }
 
-
-// dead function 
+// dead function
 // async function displayDeadCard(value) {
 //   loadOn3()
 //   numDeadline.textContent = " ";
@@ -578,7 +545,7 @@ invoiceBtn.addEventListener('click', () => {
 //     }
 //   });
 //   loadOff3()
-//   // deadline location 
+//   // deadline location
 //   let deadlineUrl = `Deadlines.html?id=${value}`;
 //   seeMore3.href = deadlineUrl;
 //   let deadline = await fetch(deadlineUrl);
@@ -588,9 +555,6 @@ invoiceBtn.addEventListener('click', () => {
 
 // }
 
-
-
-
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
   localStorage.setItem("searchBtn", e.target.classList[0]);
@@ -598,7 +562,7 @@ searchButton.addEventListener("click", (e) => {
   // sessionStorage.clear();
   const value = searchInput[0].value;
   console.log("value :" + value);
-  if (value.trim() === "" ||  value == null) {
+  if (value.trim() === "" || value == null) {
     // Create a Bootstrap alert message
     const alertMessage = document.createElement("div");
     alertMessage.classList.add("alert", "alert-danger");
@@ -637,14 +601,12 @@ searchButton.addEventListener("click", (e) => {
     Complaintss.innerHTML = 0;
     // footer3.textContent = "No deadlines found";
 
-
-
     // Stop all functions from another JavaScript file
     return;
   } else {
     sessionStorage.clear();
     display(value);
-    moreEmail()
+    moreEmail();
 
     updateButtonState();
 
@@ -652,13 +614,6 @@ searchButton.addEventListener("click", (e) => {
     // displayPlanCard(value)
   }
 });
-
-
-
-
-
-
-
 
 window.onload = function () {
   const sidebar = document.querySelector(".sidebar");
@@ -684,53 +639,57 @@ window.onload = function () {
   }
 };
 
-
-const logOut = document.querySelector('.log_out');
-logOut.addEventListener('click', () => {
+const logOut = document.querySelector(".log_out");
+logOut.addEventListener("click", () => {
   sessionStorage.clear();
   localStorage.clear();
-})
-
+});
 
 //for pervent back btn of browser
-function preventBack() { window.history.forward(); }
+function preventBack() {
+  window.history.forward();
+}
 setTimeout("preventBack()", 0);
-window.onunload = function () { null };
+window.onunload = function () {
+  null;
+};
 
-// for Qr code btn 
-jQuery('#digitalId').on('submit', function (e) {
+// for Qr code btn
+jQuery("#digitalId").on("submit", function (e) {
   e.preventDefault();
   jQuery.ajax({
-    url: 'https://script.google.com/macros/s/AKfycby44o-bMq1bUH1Gw8gBlb39RrOkHJXtHqQVkADmeP1uIh_udRVs1YP6Re4YuoVqJgkyvA/exec',
-    type: 'post',
-    data: jQuery('#digitalId').serialize(),
+    url: "https://script.google.com/macros/s/AKfycby44o-bMq1bUH1Gw8gBlb39RrOkHJXtHqQVkADmeP1uIh_udRVs1YP6Re4YuoVqJgkyvA/exec",
+    type: "post",
+    data: jQuery("#digitalId").serialize(),
     beforeSend: function () {
-      var spinner = '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
-      jQuery('#spinner-container5').html(spinner);
+      var spinner =
+        '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
+      jQuery("#spinner-container5").html(spinner);
     },
 
     success: function (result) {
-      jQuery('#digitalId')[0].reset();
+      jQuery("#digitalId")[0].reset();
       // Display success message here
       // Display success message here
       // alertMsg.classList.add('alert', 'alert-success');
       // Check if id is empty
       const id = sessionStorage.getItem("idToPass");
-      if (id === null || id === '') {
-        alertMsg.classList.add('alert', 'alert-danger');
-        alertMsg.innerHTML = '<strong>Error!</strong> Please Enter Invalid Id .';
-        alertMsg.style.display = 'block';
+      if (id === null || id === "") {
+        alertMsg.classList.add("alert", "alert-danger");
+        alertMsg.innerHTML =
+          "<strong>Error!</strong> Please Enter Invalid Id .";
+        alertMsg.style.display = "block";
       } else {
-        alertMsg.classList.remove('alert', 'alert-danger');
-        alertMsg.classList.add('alert', 'alert-success');
-        alertMsg.innerHTML = '<strong>Success!</strong> Send successfully.';
-        alertMsg.style.display = 'block';
+        alertMsg.classList.remove("alert", "alert-danger");
+        alertMsg.classList.add("alert", "alert-success");
+        alertMsg.innerHTML = "<strong>Success!</strong> Send successfully.";
+        alertMsg.style.display = "block";
       }
-      alertMsg.style.width = '25%';
-      alertMsg.style.position = 'fixed';
-      alertMsg.style.top = '0';
-      alertMsg.style.left = '38%';
-      alertMsg.style.margin = '20px';
+      alertMsg.style.width = "25%";
+      alertMsg.style.position = "fixed";
+      alertMsg.style.top = "0";
+      alertMsg.style.left = "38%";
+      alertMsg.style.margin = "20px";
       alertMsg.style.transition = "all 0.5s ease-in-out";
       // alertMsg.innerHTML = '<strong>Success!</strong> QR Code Send successfully.';
       // alertMsg.style.display = "block";
@@ -740,19 +699,19 @@ jQuery('#digitalId').on('submit', function (e) {
       }, 10);
       setTimeout(function () {
         alertMsg.style.display = "none";
-
       }, 2000);
     },
     error: function () {
       // Display error message here
-      alertMsg.classList.add('alert', 'alert-danger');
-      alertMsg.style.width = '25%';
-      alertMsg.style.position = 'fixed';
-      alertMsg.style.top = '0';
-      alertMsg.style.left = '38%';
-      alertMsg.style.margin = '20px';
+      alertMsg.classList.add("alert", "alert-danger");
+      alertMsg.style.width = "25%";
+      alertMsg.style.position = "fixed";
+      alertMsg.style.top = "0";
+      alertMsg.style.left = "38%";
+      alertMsg.style.margin = "20px";
       alertMsg.style.transition = "all 0.5s ease-in-out";
-      alertMsg.innerHTML = '<strong>Error!</strong> An error occurred. Please try again.';
+      alertMsg.innerHTML =
+        "<strong>Error!</strong> An error occurred. Please try again.";
       alertMsg.style.display = "block";
       alertMsg.style.opacity = "0";
       setTimeout(function () {
@@ -763,17 +722,20 @@ jQuery('#digitalId').on('submit', function (e) {
       }, 2000);
     },
     complete: function () {
-      jQuery('#spinner-container5').empty();
-    }
+      jQuery("#spinner-container5").empty();
+    },
   });
 });
 
-const alertMsg = document.querySelector('.alertMsg');
+const alertMsg = document.querySelector(".alertMsg");
 
-
-shareSubmit.addEventListener('click', () => {
+shareSubmit.addEventListener("click", () => {
   // Get the id from session storage.
-  const id = sessionStorage.getItem('idToPass');
+  const id = sessionStorage.getItem("idToPass");
+  const Employee = document.querySelector("#Employee");
+  const StudentNum = document.querySelector("#StudentNum");
+  const userr = localStorage.getItem("user");
+  
 
   // Check if the id is empty.
   if (!id) {
@@ -782,33 +744,34 @@ shareSubmit.addEventListener('click', () => {
   }
 
   // Continue with the rest of the function code.
-  const Timestamp = document.querySelector('#Timestamp3');
+  const Timestamp = document.querySelector("#Timestamp3");
   const timestamp = new Date();
   // Convert the timestamp to dd/mm/yyyy format.
-  const formattedDate = timestamp.toLocaleString('en-GB');
+  const formattedDate = timestamp.toLocaleString("en-GB");
 
   // Set the Timestamp1 input field to the formatted date.
   Timestamp.value = formattedDate;
   StudentNum.value = id;
   Employee.value = userr;
-})
+  ModuleCodeSelect.value = sessionStorage.getItem("ModuleCodeSelect");
+});
 
 // condetion for user role
 if (userRole === "Coordinator") {
-  const Resrevation = document.querySelector('#Resrevation');
-  const HR = document.querySelector('#HR');
-  const Settings = document.querySelector('#Settings');
+  const Resrevation = document.querySelector("#Resrevation");
+  const HR = document.querySelector("#HR");
+  const Settings = document.querySelector("#Settings");
   user.style.display = "none";
   Resrevation.style.display = "none";
   HR.style.display = "none";
   Settings.style.display = "none";
 }
 
-const digitalIdBtn = document.querySelector('.digitalIdBtn');
+const digitalIdBtn = document.querySelector(".digitalIdBtn");
 
-digitalIdBtn.addEventListener('click', () => {
+digitalIdBtn.addEventListener("click", () => {
   // Get the id from session storage.
-  const id = sessionStorage.getItem('idToPass');
+  const id = sessionStorage.getItem("idToPass");
 
   // Check if the id is empty.
   if (!id) {
@@ -822,63 +785,61 @@ digitalIdBtn.addEventListener('click', () => {
 
   // Check if the user confirmed the action.
   if (confirmation) {
-    
     // Continue with the rest of the function code.
-    const qrCodeId = document.querySelector('#qrCodeId');
-    const Emp = document.querySelector('#Emp');
-    const Timestamp = document.querySelector('#Timestamp');
+    const qrCodeId = document.querySelector("#qrCodeId");
+    const Emp = document.querySelector("#Emp");
+    const Timestamp = document.querySelector("#Timestamp");
     const timestamp = new Date();
     // Convert the timestamp to dd/mm/yyyy format.
-    const formattedDate = timestamp.toLocaleString('en-GB');
-  
+    const formattedDate = timestamp.toLocaleString("en-GB");
+
     // Set the Timestamp1 input field to the formatted date.
     Timestamp.value = formattedDate;
     qrCodeId.value = id;
     Emp.value = userr;
   } else {
-    const spinnerContainer = document.querySelector('#spinner-container5');
-    spinnerContainer.style.display = 'none';
-    const alertMsg = document.querySelector('#alertMsg');
+    const spinnerContainer = document.querySelector("#spinner-container5");
+    spinnerContainer.style.display = "none";
+    const alertMsg = document.querySelector("#alertMsg");
 
     alertMsg.style.display = "none";
   }
+});
 
-})
-
-
-
-// for App btn 
-jQuery('#App').on('submit', function (e) {
+// for App btn
+jQuery("#App").on("submit", function (e) {
   e.preventDefault();
   jQuery.ajax({
-    url: 'https://script.google.com/macros/s/AKfycbzH2q6PplOKtYWlnApCJDX0x_oSqTBLB52EpXrB_8S9TmIA1nFfGk2UgtTHd66OlqwMxw/exec',
-    type: 'post',
-    data: jQuery('#App').serialize(),
+    url: "https://script.google.com/macros/s/AKfycbzH2q6PplOKtYWlnApCJDX0x_oSqTBLB52EpXrB_8S9TmIA1nFfGk2UgtTHd66OlqwMxw/exec",
+    type: "post",
+    data: jQuery("#App").serialize(),
     beforeSend: function () {
-      var spinner = '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
-      jQuery('#spinner-container1').html(spinner);
+      var spinner =
+        '<div class="text-center appSpi" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
+      jQuery("#spinner-container1").html(spinner);
     },
     success: function (result) {
-      jQuery('#App')[0].reset();
+      jQuery("#App")[0].reset();
       // Display success message here
       // alertMsg.classList.add('alert', 'alert-success');
       // Check if id is empty
       const id = sessionStorage.getItem("idToPass");
-      if (id === null || id === '') {
-        alertMsg.classList.add('alert', 'alert-danger');
-        alertMsg.innerHTML = '<strong>Error!</strong> Please Enter Invalid Id .';
-        alertMsg.style.display = 'block';
+      if (id === null || id === "") {
+        alertMsg.classList.add("alert", "alert-danger");
+        alertMsg.innerHTML =
+          "<strong>Error!</strong> Please Enter Invalid Id .";
+        alertMsg.style.display = "block";
       } else {
-        alertMsg.classList.remove('alert', 'alert-danger');
-        alertMsg.classList.add('alert', 'alert-success');
-        alertMsg.innerHTML = '<strong>Success!</strong> Send successfully.';
-        alertMsg.style.display = 'block';
+        alertMsg.classList.remove("alert", "alert-danger");
+        alertMsg.classList.add("alert", "alert-success");
+        alertMsg.innerHTML = "<strong>Success!</strong> Send successfully.";
+        alertMsg.style.display = "block";
       }
-      alertMsg.style.width = '25%';
-      alertMsg.style.position = 'fixed';
-      alertMsg.style.top = '0';
-      alertMsg.style.left = '38%';
-      alertMsg.style.margin = '20px';
+      alertMsg.style.width = "25%";
+      alertMsg.style.position = "fixed";
+      alertMsg.style.top = "0";
+      alertMsg.style.left = "38%";
+      alertMsg.style.margin = "20px";
       alertMsg.style.transition = "all 0.5s ease-in-out";
       // alertMsg.innerHTML = '<strong>Success!</strong> QR Code Send successfully.';
       // alertMsg.style.display = "block";
@@ -888,19 +849,19 @@ jQuery('#App').on('submit', function (e) {
       }, 10);
       setTimeout(function () {
         alertMsg.style.display = "none";
-
       }, 2000);
     },
     error: function () {
       // Display error message here
-      alertMsg.classList.add('alert', 'alert-danger');
-      alertMsg.style.width = '25%';
-      alertMsg.style.position = 'fixed';
-      alertMsg.style.top = '0';
-      alertMsg.style.left = '38%';
-      alertMsg.style.margin = '20px';
+      alertMsg.classList.add("alert", "alert-danger");
+      alertMsg.style.width = "25%";
+      alertMsg.style.position = "fixed";
+      alertMsg.style.top = "0";
+      alertMsg.style.left = "38%";
+      alertMsg.style.margin = "20px";
       alertMsg.style.transition = "all 0.5s ease-in-out";
-      alertMsg.innerHTML = '<strong>Error!</strong> An error occurred. Please try again.';
+      alertMsg.innerHTML =
+        "<strong>Error!</strong> An error occurred. Please try again.";
       alertMsg.style.display = "block";
       alertMsg.style.opacity = "0";
       setTimeout(function () {
@@ -911,51 +872,48 @@ jQuery('#App').on('submit', function (e) {
       }, 2000);
     },
     complete: function () {
-      jQuery('#spinner-container1').empty();
-    }
+      jQuery("#spinner-container1").empty();
+    },
   });
 });
 
-frmOnlineShare
-
-// for frmOnlineShare btn 
-jQuery('#frmOnlineShare').on('submit', function (e) {
+// for frmOnlineShare btn
+jQuery("#frmOnlineShare").on("submit", function (e) {
   e.preventDefault();
   jQuery.ajax({
-    url: 'https://script.google.com/macros/s/AKfycbxlb0mRkFopP6ngJDTxOVnaItOvvikJAg6GjrHb_Ajl0WMxYY9SPpHpXjnpBc_Pjvy1tg/exec',
-    type: 'post',
-    data: jQuery('#frmOnlineShare').serialize(),
+    url: "https://script.google.com/macros/s/AKfycbwknrWp9c1yBSuh-NaRNf7U019OLz0fFy7lOlc-go8AWJyZle_Fqz9sJMNzLqj54IgjxQ/exec",
+    type: "post",
+    data: jQuery("#frmOnlineShare").serialize(),
     beforeSend: function () {
-      var spinner = '<div class="text-center appSpi ml-2" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
-      jQuery('#spinner-container2').html(spinner);
+      var spinner =
+        '<div class="text-center appSpi ml-2" ><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
+      jQuery("#spinner-container2").html(spinner);
     },
     success: function (result) {
-      jQuery('#frmOnlineShare')[0].reset();
-      const ModuleCodeSelect = document.querySelector('#ModuleCodeSelect');
+      jQuery("#frmOnlineShare")[0].reset();
+      // const ModuleCodeSelect = document.querySelector("#ModuleCodeSelect");
+      console.log(ModuleCodeSelect.value);
 
       // Display success message here
       // alertMsg.classList.add('alert', 'alert-success');
       // Check if id is empty
       const id = sessionStorage.getItem("idToPass");
-      if (id === null || id === '') {
-        alertMsg.classList.add('alert', 'alert-danger');
-        alertMsg.innerHTML = '<strong>Error!</strong> Please Enter Invalid Id .';
-        alertMsg.style.display = 'block';
-      } else if (ModuleCodeSelect.value === '') {
-        alertMsg.classList.add('alert', 'alert-danger');
-        alertMsg.innerHTML = '<strong>Error!</strong> Please Select Module .';
-        alertMsg.style.display = 'block';
+      if (id === null || id === "") {
+        alertMsg.classList.add("alert", "alert-danger");
+        alertMsg.innerHTML =
+          "<strong>Error!</strong> Please Enter Invalid Id .";
+        alertMsg.style.display = "block";
       } else {
-        alertMsg.classList.remove('alert', 'alert-danger');
-        alertMsg.classList.add('alert', 'alert-success');
-        alertMsg.innerHTML = '<strong>Success!</strong> Send successfully.';
-        alertMsg.style.display = 'block';
+        alertMsg.classList.remove("alert", "alert-danger");
+        alertMsg.classList.add("alert", "alert-success");
+        alertMsg.innerHTML = "<strong>Success!</strong> Send successfully.";
+        alertMsg.style.display = "block";
       }
-      alertMsg.style.width = '25%';
-      alertMsg.style.position = 'fixed';
-      alertMsg.style.top = '0';
-      alertMsg.style.left = '38%';
-      alertMsg.style.margin = '20px';
+      alertMsg.style.width = "25%";
+      alertMsg.style.position = "fixed";
+      alertMsg.style.top = "0";
+      alertMsg.style.left = "38%";
+      alertMsg.style.margin = "20px";
       alertMsg.style.transition = "all 0.5s ease-in-out";
       // alertMsg.innerHTML = '<strong>Success!</strong> QR Code Send successfully.';
       // alertMsg.style.display = "block";
@@ -965,19 +923,19 @@ jQuery('#frmOnlineShare').on('submit', function (e) {
       }, 10);
       setTimeout(function () {
         alertMsg.style.display = "none";
-
       }, 2000);
     },
     error: function () {
       // Display error message here
-      alertMsg.classList.add('alert', 'alert-danger');
-      alertMsg.style.width = '25%';
-      alertMsg.style.position = 'fixed';
-      alertMsg.style.top = '0';
-      alertMsg.style.left = '38%';
-      alertMsg.style.margin = '20px';
+      alertMsg.classList.add("alert", "alert-danger");
+      alertMsg.style.width = "25%";
+      alertMsg.style.position = "fixed";
+      alertMsg.style.top = "0";
+      alertMsg.style.left = "38%";
+      alertMsg.style.margin = "20px";
       alertMsg.style.transition = "all 0.5s ease-in-out";
-      alertMsg.innerHTML = '<strong>Error!</strong> An error occurred. Please try again.';
+      alertMsg.innerHTML =
+        "<strong>Error!</strong> An error occurred. Please try again.";
       alertMsg.style.display = "block";
       alertMsg.style.opacity = "0";
       setTimeout(function () {
@@ -988,53 +946,49 @@ jQuery('#frmOnlineShare').on('submit', function (e) {
       }, 2000);
     },
     complete: function () {
-      jQuery('#spinner-container2').empty();
-      jQuery('#exampleModal1').modal('hide');
-    }
+      jQuery("#spinner-container2").empty();
+      jQuery("#exampleModal1").modal("hide");
+      $("#exampleModal1").on("hidden.bs.modal", function (e) {
+        $(".modal-backdrop").remove();
+      });
+    },
   });
 });
 
 // access for role
-const appBtn = document.querySelector('.appBtn');
+const appBtn = document.querySelector(".appBtn");
 // console.log(userRole);
 // if (userRole === "System") {
 //   appBtn.style.display = "none";
 // }
 
-
-
-const onlineShareBtn = document.querySelector('#onlineShareBtn');
-
-
+const onlineShareBtn = document.querySelector("#onlineShareBtn");
 
 // Function to update the disabled state of the button based on the id
 function updateButtonState() {
-  const appBtn = document.querySelector('.appBtn');
-  const digitalIdBtn = document.querySelector('.digitalIdBtn');
-  const invoiceBtn = document.querySelector('.invoiceBtn');
-  const cancelBtn = document.querySelector('#cancel');
-  const smsBtnM = document.querySelector('#smsBtnM');
-  const emailBtnM = document.querySelector('#emailBtnM');
-  const onlineShareBtn = document.querySelector('#onlineShareBtn');
+  const appBtn = document.querySelector(".appBtn");
+  const digitalIdBtn = document.querySelector(".digitalIdBtn");
+  const invoiceBtn = document.querySelector(".invoiceBtn");
+  const cancelBtn = document.querySelector("#cancel");
+  const smsBtnM = document.querySelector("#smsBtnM");
+  const emailBtnM = document.querySelector("#emailBtnM");
+  const onlineShareBtn = document.querySelector("#onlineShareBtn");
 
+  appBtn.disabled = false; // Enable the button if id is present
+  digitalIdBtn.disabled = false; // Enable the button if id is present
+  invoiceBtn.disabled = false; // Enable the button if id is present
+  cancelBtn.disabled = false; // Enable the button if id is present
+  smsBtnM.disabled = false; // Enable the button if id is present
+  emailBtnM.disabled = false; // Enable the button if id is present
+  onlineShareBtn.disabled = false; // Enable the button if id is present
 
-    appBtn.disabled = false; // Enable the button if id is present
-    digitalIdBtn.disabled = false; // Enable the button if id is present
-    invoiceBtn.disabled = false; // Enable the button if id is present
-    cancelBtn.disabled = false; // Enable the button if id is present
-    smsBtnM.disabled = false; // Enable the button if id is present
-    emailBtnM.disabled = false; // Enable the button if id is present
-    onlineShareBtn.disabled = false; // Enable the button if id is present
-
-    // Save the result in session storage
+  // Save the result in session storage
   // sessionStorage.setItem('buttonDisabled', appBtn.disabled);
 }
 
-
-
-appBtn.addEventListener('click', () => {
+appBtn.addEventListener("click", () => {
   // Get the id from session storage.
-  const id = sessionStorage.getItem('idToPass');
+  const id = sessionStorage.getItem("idToPass");
 
   // Check if the id is empty.
   if (!id) {
@@ -1047,35 +1001,27 @@ appBtn.addEventListener('click', () => {
   const confirmation = confirm(confirmationMessage);
 
   if (confirmation) {
-
     // Continue with the rest of the function code.
-    const appId = document.querySelector('#appId');
-    const Emp1 = document.querySelector('#Emp1');
-    const Timestamp1 = document.querySelector('#Timestamp1');
+    const appId = document.querySelector("#appId");
+    const Emp1 = document.querySelector("#Emp1");
+    const Timestamp1 = document.querySelector("#Timestamp1");
     const timestamp = new Date();
 
     // Convert the timestamp to dd/mm/yyyy format.
-    const formattedDate = timestamp.toLocaleString('en-GB');
+    const formattedDate = timestamp.toLocaleString("en-GB");
 
     // Set the Timestamp1 input field to the formatted date.
     Timestamp1.value = formattedDate;
     appId.value = id;
     Emp1.value = userr;
   } else {
-    const spinnerContainer = document.querySelector('#spinner-container1');
-    spinnerContainer.style.display = 'none';
-    const alertMsg = document.querySelector('#alertMsg');
+    const spinnerContainer = document.querySelector("#spinner-container1");
+    spinnerContainer.style.display = "none";
+    const alertMsg = document.querySelector("#alertMsg");
 
     alertMsg.style.display = "none";
   }
 });
-
-
-
-
-
-
-
 
 // const id = sessionStorage.getItem('idToPass');
 
@@ -1087,7 +1033,6 @@ appBtn.addEventListener('click', () => {
 //   }
 // }
 
-
 // window.addEventListener('DOMContentLoaded', checkIdAndDisableButton);
 
 // window.addEventListener('storage', function (e) {
@@ -1096,8 +1041,6 @@ appBtn.addEventListener('click', () => {
 //     checkIdAndDisableButton();
 //   }
 // });
-
-
 
 // window.addEventListener("popstate", function(event) {
 //   sessionStorage.clear();
@@ -1114,7 +1057,7 @@ appBtn.addEventListener('click', () => {
 //   localStorage.setItem('authInfo', JSON.stringify(params));
 // }
 
-// // hide the access token 
+// // hide the access token
 // if (window.history && window.history.pushState) {
 //   window.history.pushState({}, document.title, "/SRM.html");
 // } else {
@@ -1128,17 +1071,12 @@ appBtn.addEventListener('click', () => {
 
 // console.log(user);
 
-
-
-
-
 // const trace = document.createElement("h1");
 
 // trace.classList.add("success" , "alert");
 // trace.style.width = "25%";
 
 // trace.style.zIndex = "1";
-
 
 // const storage = sessionStorage.getItem("searchBtn");
 
@@ -1148,10 +1086,12 @@ appBtn.addEventListener('click', () => {
 
 // document.body.appendChild(trace);
 
-
-window.addEventListener('load', function () {
-  if (localStorage.getItem("myCode") === "" || localStorage.getItem("myCode") === null) {
+window.addEventListener("load", function () {
+  if (
+    localStorage.getItem("myCode") === "" ||
+    localStorage.getItem("myCode") === null
+  ) {
     // Redirect to index.html
-    window.location.href = 'index.html';
+    window.location.href = "index.html";
   }
-})
+});

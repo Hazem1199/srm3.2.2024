@@ -116,7 +116,9 @@ jQuery('#frmEmail').on('submit', function (e) {
     complete: function () {
       jQuery('#spinner-container4').empty();
       jQuery('#exampleModal4').modal('hide');
-
+      $("#exampleModal4").on("hidden.bs.modal", function (e) {
+        $(".modal-backdrop").remove();
+      });
     }
   });
 });
